@@ -16,6 +16,16 @@ include device/sony/shinano/BoardConfig.mk
 
 TARGET_BOOTLOADER_BOARD_NAME := D6603
 
+# Kernel
+BOARD_KERNEL_BASE     := 0x00000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_CMDLINE  := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 dwc3.maximum_speed=high dwc3_msm.prop_chg_detect=Y
+BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x02000000 --tags_offset 0x01E00000
+BOARD_KERNEL_SEPARATED_DT := true
+TARGET_DTB_EXTRA_FLAGS := --force-v2
+TARGET_KERNEL_SOURCE := kernel/sony/msm8974
+TARGET_KERNEL_CONFIG := aosp_shinano_leo_defconfig
+
 #Reserve space for data encryption (12656259072-16384)
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12656242688
 
